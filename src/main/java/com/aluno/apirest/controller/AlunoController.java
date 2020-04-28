@@ -1,9 +1,9 @@
 package com.aluno.apirest.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aluno.apirest.models.Aluno;
+import com.aluno.apirest.dto.AlunoDto;
+import com.aluno.apirest.dto.AlunoResponseDto;
 import com.aluno.apirest.service.AlunoService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -26,23 +27,23 @@ public class AlunoController {
 	private AlunoService alunoService;
 	
 	@GetMapping
-	public List<Aluno> buscarTodos() {
-		return this.alunoService.buscarTodos();
+	public ResponseEntity<List<AlunoResponseDto>> buscarTodos() {
+		return ResponseEntity.ok(this.alunoService.buscarTodos());
 	}
 	
 	@GetMapping("/{id}")
-	public Optional<Aluno> buscarPorId(@PathVariable Long id) {
-		return this.alunoService.buscarPorId(id);
+	public ResponseEntity<AlunoDto> buscarPorId(@PathVariable Long id) {
+		return ResponseEntity.ok(this.alunoService.buscarPorId(id));
 	}
 	
-	@PostMapping()
-	public Aluno salvar(@RequestBody Aluno aluno) {
-		return this.alunoService.salvar(aluno);
+	@PostMapping
+	public ResponseEntity<AlunoDto> salvar(@RequestBody AlunoDto dto) {
+	    return ResponseEntity.ok(alunoService.salvar(dto));
 	}
 	
 	@PutMapping("/{id}")
-	public Aluno editar(@RequestBody Aluno aluno, @PathVariable Long id) {
-		return this.alunoService.editar(aluno, id);
+	public ResponseEntity<AlunoDto> editar(@RequestBody AlunoDto dto, @PathVariable Long id) {
+		return ResponseEntity.ok(this.alunoService.editar(dto, id));
 	}
 	
 	@DeleteMapping("/{id}")
