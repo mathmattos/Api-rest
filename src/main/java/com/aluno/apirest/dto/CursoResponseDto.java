@@ -1,40 +1,37 @@
 package com.aluno.apirest.dto;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
-public class CursoDto {
+
+public class CursoResponseDto {
 	
-	@NotNull
+	
 	private long id;
 	
-	@NotNull
-	@Size(max = 80)
-	private String nome;
-	
-	@NotNull
-	@Size(max = 5000)
+    private String nome;
+    
 	private  String ementa;
 	
-	@NotNull 
 	private java.util.Date dataInicio;
 	
-	@NotNull 
 	private  java.util.Date dataTermino;
 	
-	@NotNull
 	private String qtdMaxAluno;
 
-	public String getQtdMaxAluno() {
-		return qtdMaxAluno;
-	}
-
-	public void setQtdMaxAluno(String qtdMaxAluno) {
-		this.qtdMaxAluno = qtdMaxAluno;
-	}
-
+	
 	public long getId() {
 		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getEmenta() {
@@ -61,16 +58,13 @@ public class CursoDto {
 		this.dataTermino = dataTermino;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public String getQtdMaxAluno() {
+		return qtdMaxAluno;
 	}
 
-	public String getNome() {
-		return nome;
+	public void setQtdMaxAluno(String qtdMaxAluno) {
+		this.qtdMaxAluno = qtdMaxAluno;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 
 }

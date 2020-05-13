@@ -20,6 +20,7 @@ public class Aluno implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy=GenerationType.AUTO)

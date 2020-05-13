@@ -2,6 +2,8 @@ package com.aluno.apirest.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -37,12 +39,12 @@ public class AlunoController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<AlunoDto> salvar(@RequestBody AlunoDto dto) {
+	public ResponseEntity<AlunoDto> salvar(@RequestBody @Valid AlunoDto dto) {
 	    return ResponseEntity.ok(alunoService.salvar(dto));
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<AlunoDto> editar(@RequestBody AlunoDto dto, @PathVariable Long id) {
+	public ResponseEntity<AlunoDto> editar(@RequestBody @Valid AlunoDto dto, @PathVariable Long id) {
 		return ResponseEntity.ok(this.alunoService.editar(dto, id));
 	}
 	
