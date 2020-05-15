@@ -1,5 +1,6 @@
 package com.aluno.apirest.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import com.aluno.apirest.dto.CursoDto;
 import com.aluno.apirest.service.CursoService;
@@ -32,6 +35,22 @@ public class CursoController {
 	return ResponseEntity.ok(this.cursoService.buscarPorId(id));
 	}
 	
-	
+
+    @PostMapping
+	public ResponseEntity<List<CursoDto>> buscarPorNome(@PathVariable String nome, Date dataInicio, Date dataFim) {
+		return ResponseEntity.ok(this.cursoService.buscarPorNome(nome, dataInicio, dataFim));
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }

@@ -54,10 +54,19 @@ public class CursoService {
 		return dtos;
 	}
 	
-	public List<CursoDto> findByCod(String nome, Date dataInicio, Date dataFim) {
-
-        return (List<CursoDto>) CursoRepository.findByname(nome, dataInicio, dataFim);
-    }
+	public List<CursoDto> buscarPorNome(String nome, Date dataInicio, Date dataFim) {
+		List<Curso> cursos = this.cursoRepository.findByname(nome, dataInicio, dataFim);
+		List<CursoDto> dtos = new ArrayList<CursoDto>();
+		if(cursos.isEmpty())
+			return null;
+		for(Curso curso : cursos) {
+			dtos.add(mapper.cursoToCursoDto(curso));
+		}
+		return dtos;
+	
+		
+		}
+	
 	
 	
 	
