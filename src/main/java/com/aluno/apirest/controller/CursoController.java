@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aluno.apirest.dto.CursoDto;
@@ -51,12 +50,9 @@ public class CursoController {
 	}
 	
 
-	@PostMapping
-	public ResponseEntity<Page<CursoDto>> obterPaginados(
-			@RequestParam("page") int page,
-			@RequestParam("size") int size			
-	){		
-		return ResponseEntity.ok(cursoService.obterPaginados(page, size));
+	@GetMapping(path = "pages")
+	public ResponseEntity<Page<CursoDto>> listar(int page, int size) {
+		return ResponseEntity.ok(cursoService.listar(page, size));
 	}
 
     

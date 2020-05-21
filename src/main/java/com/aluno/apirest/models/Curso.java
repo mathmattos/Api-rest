@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -26,8 +24,6 @@ public class Curso implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "nome", referencedColumnName = "id")
 	@Column(name = "nome")
 	private String nome;
 	
@@ -54,6 +50,10 @@ public class Curso implements Serializable {
 
 	public void setDataFim(java.util.Date dataFim) {
 		this.dataFim = dataFim;
+	}
+	
+	public java.util.Date getDataFim() {
+		return dataFim;
 	}
 
 	public String getEmenta() {
